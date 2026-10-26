@@ -496,3 +496,50 @@ a.also-item:hover { border-color: rgba(255,106,61,.4); }
   .js .reveal, .js .hero-copy > *, .js .portrait { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ---------- Serviloop card and case-study page ---------- */
+.eng-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.eng-top .kicker { margin: 0; }
+.badge.proj, .badge.note { margin-left: 0; }
+.badge.proj { color: var(--blue); background: rgba(122,167,255,.08); border: 1px solid rgba(122,167,255,.25); }
+.badge.note { color: var(--accent-2); background: rgba(255,106,61,.08); border: 1px solid rgba(255,106,61,.25); }
+.eng-phone { display: grid; place-items: center; }
+.eng-phone .phone { width: min(250px, 70%); border-radius: 40px; border-width: 7px; }
+.eng-phone .island { top: 10px; height: 20px; }
+.eng-links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 6px; }
+.store.ghost { background: transparent; color: var(--text); border: 1px solid var(--line-2); }
+.store.ghost:hover { box-shadow: none; border-color: rgba(255,255,255,.3); }
+
+.cs-hero { padding-top: 64px; }
+.cs-hero h1 { font: 800 clamp(2rem, 5vw, 3.2rem)/1.05 var(--font-display); letter-spacing: -0.03em; margin: 0 0 18px; }
+.cs-hero .lead { font-size: 1.12rem; color: #c3c8d2; max-width: 64ch; margin: 0 0 18px; }
+.cs-status { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+.cs-status .badge { margin-left: 0; }
+.cs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.cs-block { padding: 28px; border-radius: var(--radius); border: 1px solid var(--line); background: linear-gradient(160deg, rgba(122,167,255,.05), rgba(255,255,255,.01)); min-width: 0; }
+.cs-block h3 { font: 600 1.15rem/1.25 var(--font-display); letter-spacing: -0.02em; margin: 0 0 12px; }
+.cs-block p { color: var(--muted); margin: 0 0 14px; font-size: 15.5px; }
+.cs-block p:last-child { margin-bottom: 0; }
+.cs-wide { grid-column: 1 / -1; }
+.cs-split { display: grid; grid-template-columns: 1fr 1.05fr; gap: 32px; align-items: center; }
+.cs-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.cs-table th, .cs-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: #c3c8d2; }
+.cs-table th { font: 500 12px var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.cs-table td.ok { color: var(--mint); }
+.cs-table td.no { color: var(--accent-2); }
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.shots figure { margin: 0; }
+.shots .phone { border-radius: 28px; border-width: 5px; }
+.shots .phone img { opacity: 1; transform: none; }
+.shots figcaption { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.4; }
+.back { display: inline-flex; gap: 8px; align-items: center; font: 500 13px var(--font-mono); color: var(--muted); margin-bottom: 26px; }
+.back:hover { color: var(--text); }
+@media (max-width: 1020px) {
+  .shots { grid-template-columns: repeat(3, 1fr); }
+  .cs-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .shots { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .cs-grid { grid-template-columns: 1fr; }
+  .cs-block { padding: 22px; }
+}

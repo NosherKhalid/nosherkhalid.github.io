@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Serviloop: a field-service app, built full stack — Nosher Khalid</title>
+<meta name="description" content="Case study: a cross-platform field-service app (React Native, TypeScript, Supabase) with database-enforced tenant isolation, a bounded AI summary function, 358 tests and CI. Tested on Android and the iOS simulator.">
+<meta name="theme-color" content="#060709">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Serviloop: a field-service app, built full stack">
+<meta property="og:description" content="React Native, TypeScript and Supabase with tested tenant isolation and a bounded AI summary function. A portfolio project by Nosher Khalid.">
+<meta property="og:url" content="https://nosherkhalid.github.io/serviloop.html">
+<meta property="og:image" content="https://nosherkhalid.github.io/assets/apps/serviloop-03-dashboard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-spot" aria-hidden="true"></div>
+<div class="bg-noise" aria-hidden="true"></div>
+
+<header class="toolbar">
+  <div class="toolbar-row">
+    <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    <a class="scheme" href="index.html#engineering">
+      <span class="scheme-icon" aria-hidden="true">▲</span>
+      <span>NosherKhalid</span><span class="chev">›</span><span class="dim">Serviloop</span>
+    </a>
+    <div class="build-status" aria-label="Status: case study">
+      <span class="pulse"></span><span><b>Case study</b> <span class="dim">| Portfolio project</span></span>
+    </div>
+    <a class="btn btn-ghost btn-sm hide-sm" href="assets/Nosher_Khalid_iOS_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#overview" class="tab"><span class="swift-dot"></span>Overview</a>
+    <a href="#architecture" class="tab"><span class="swift-dot"></span>Architecture</a>
+    <a href="#security" class="tab"><span class="swift-dot"></span>Security</a>
+    <a href="#ai" class="tab"><span class="swift-dot"></span>AI</a>
+    <a href="#evidence" class="tab"><span class="git-dot"></span>Evidence</a>
+    <a href="#screenshots" class="tab"><span class="term-dot"></span>Screenshots</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ============ Overview ============ -->
+<section class="section wrap cs-hero" id="overview">
+  <a class="back" href="index.html#engineering">← Engineering deep-dives</a>
+  <p class="mono kicker">React Native · TypeScript · Supabase · Edge Functions</p>
+  <h1>Serviloop</h1>
+  <p class="lead">A cross-platform job-management app for small service businesses (plumbing, electrical, heating, cleaning). One owner keeps customers and technicians, creates and assigns jobs, moves them through their life, records what was done, and turns the notes into a customer-friendly summary they can edit and share.</p>
+  <div class="cs-status">
+    <span class="badge proj">Portfolio project</span>
+    <span class="badge proj">Verified on Android + iOS simulator</span>
+    <span class="badge proj">AI summary</span>
+    <span class="badge proj">Built with Claude Code</span>
+  </div>
+  <div class="eng-links">
+    <a class="store" href="https://github.com/NosherKhalid/serviloop" target="_blank" rel="noopener">View the repository ↗</a>
+    <a class="store ghost" href="https://github.com/NosherKhalid/serviloop#readme" target="_blank" rel="noopener">Read the README ↗</a>
+    <a class="store ghost" href="https://github.com/NosherKhalid/serviloop/blob/main/docs/DECISIONS.md" target="_blank" rel="noopener">Decision log ↗</a>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="cs-grid">
+    <div class="cs-block">
+      <h3>The problem</h3>
+      <p>Owner-operators of 1 to 10 person service businesses often run their day from paper, WhatsApp and spreadsheets: who is going where, which jobs are open, what was done last time, and a professional write-up for the customer afterwards.</p>
+      <p>Serviloop is the small, focused tool for that loop. It is deliberately <b>one owner login</b>, with no technician or customer accounts, payments or invoices.</p>
+    </div>
+    <div class="cs-block">
+      <h3>Why I built it</h3>
+      <p>To show end-to-end engineering beyond native iOS: a typed cross-platform client, a Postgres backend where one business can never see another's data, and an AI feature with real guardrails. Every decision is written down, and every claim on this page points at evidence or says it is unverified.</p>
+      <p>I am a senior iOS engineer who was new to React Native and TypeScript when this started.</p>
+    </div>
+    <div class="cs-block cs-wide">
+      <div class="cs-split">
+        <div>
+          <h3>What it does</h3>
+          <ul class="bullets">
+            <li><b>Account and onboarding:</b> email sign-up with an encrypted session, then create a business or load a fictional demo business in one tap.</li>
+            <li><b>Customers and technicians:</b> add, edit and delete customers (not while they have jobs); technicians are deactivated, never deleted, so history stays.</li>
+            <li><b>Jobs:</b> customer, optional technician, native date and time pickers, and a status that can only make allowed moves (Open, In progress, Completed, Cancelled).</li>
+            <li><b>Job detail:</b> one-tap moves, completion notes that stay above the keyboard, and an editable customer summary you can save and share.</li>
+            <li><b>Dashboard:</b> live counts straight from the database and the five most recently changed jobs.</li>
+          </ul>
+        </div>
+        <div class="eng-phone">
+          <div class="phone" data-carousel>
+            <div class="island"></div>
+            <img src="assets/apps/serviloop-03-dashboard.jpg" alt="Serviloop dashboard" loading="lazy" class="active">
+            <img src="assets/apps/serviloop-05-job-detail.jpg" alt="" loading="lazy">
+            <img src="assets/apps/serviloop-07-summary.jpg" alt="" loading="lazy">
+            <img src="assets/apps/serviloop-09-new-job.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Architecture ============ -->
+<section class="section wrap" id="architecture">
+  <header class="sec-head">
+    <p class="mono sec-file"><span class="swift-dot"></span>Architecture</p>
+    <h2><span class="num mono">01</span>Architecture</h2>
+    <p class="sec-sub">One Expo codebase, one Supabase project, one Edge Function. The database is the access-control layer, not the app.</p>
+  </header>
+  <div class="cs-block cs-wide">
+    <div class="cs-split">
+      <div>
+        <h3>Data flows one way</h3>
+        <div class="pipe mono" aria-label="App layers">
+          <span>Screen</span><i>→</i><span>feature hook</span><i>→</i><span>repository</span><i>→</i><span>Supabase client</span><i>→</i><span class="hl">Postgres + RLS</span>
+        </div>
+        <p>Screens only render. Hooks hold loading, error and form state. Repositories are the only code that talks to Supabase. Anything crossing a boundary (forms, route parameters, network replies) is validated with Zod, because TypeScript types are erased at runtime.</p>
+        <div class="tags"><span>Expo Router</span><span>TypeScript strict</span><span>Zod</span><span>Supabase Auth</span><span>Postgres + RLS</span><span>Deno Edge Function</span><span>Jest + RNTL</span><span>GitHub Actions</span></div>
+      </div>
+      <div class="graph" aria-label="System architecture">
+        <svg viewBox="0 0 440 250" role="img" aria-labelledby="sarch">
+          <title id="sarch">The Expo app talks to the Supabase API and to one Edge Function. Both reach Postgres with the caller's own permissions. Only the Edge Function can reach the AI model or the labelled mock.</title>
+          <g class="edges">
+            <path d="M220 48 C220 80 110 76 110 104"/>
+            <path d="M220 48 C220 80 330 76 330 104"/>
+            <path d="M110 132 L110 200"/>
+            <path d="M310 132 C310 170 150 165 150 200"/>
+            <path d="M350 132 L350 200"/>
+          </g>
+          <g class="nodes">
+            <g class="node feat"><rect x="130" y="18" width="180" height="30" rx="7"/><text x="220" y="38">Expo app · RN + TS</text></g>
+            <g class="node svc"><rect x="20" y="104" width="180" height="30" rx="7"/><text x="110" y="124">Supabase Auth + API</text></g>
+            <g class="node svc"><rect x="250" y="104" width="180" height="30" rx="7"/><text x="340" y="124">Edge Function</text></g>
+            <g class="node core"><rect x="20" y="200" width="180" height="30" rx="7"/><text x="110" y="220">Postgres · RLS</text></g>
+            <g class="node"><rect x="250" y="200" width="180" height="30" rx="7"/><text x="340" y="220">Claude | labelled mock</text></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Security ============ -->
+<section class="section wrap" id="security">
+  <header class="sec-head">
+    <p class="mono sec-file"><span class="swift-dot"></span>Security</p>
+    <h2><span class="num mono">02</span>Security, and how it is tested</h2>
+    <p class="sec-sub">Tenant isolation is enforced in the schema and proven by attacking it, not assumed.</p>
+  </header>
+  <div class="cs-grid">
+    <div class="cs-block">
+      <h3>Enforced by the database</h3>
+      <ul class="bullets">
+        <li><b>Row-level security on every table</b>, with every default privilege revoked and then granted narrowly.</li>
+        <li><b>Composite foreign keys:</b> a job can only reference a customer or technician of the same business, even with a forged id.</li>
+        <li><b>Column grants:</b> ids, owners and business links cannot be written after creation, so rows cannot be moved between businesses.</li>
+        <li>The app holds only the project URL and the <b>publishable key</b>. No secret or service key is ever in the app.</li>
+      </ul>
+    </div>
+    <div class="cs-block">
+      <h3>Proven by scripted attacks</h3>
+      <p><code class="mono">npm run test:rls</code> signs up throwaway users on the hosted project and attacks across accounts: reads, edits, deletes, forged foreign keys, signed-out access, column tampering, the AI rate-limit table.</p>
+      <p><b>71 of 71 checks pass.</b> Every "rejected" case must fail with a specific database error code, so a typo or network error cannot pass as a security win.</p>
+    </div>
+    <div class="cs-block cs-wide">
+      <h3>A public repository, kept clean</h3>
+      <p>The full git history (45+ commits) was scanned for secrets: no AI keys, database passwords, tokens or key files. Only <code class="mono">.env.example</code> was ever committed. A clean clone with no <code class="mono">.env</code> installs in about 9 seconds and passes the whole check.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI ============ -->
+<section class="section wrap" id="ai">
+  <header class="sec-head">
+    <p class="mono sec-file"><span class="swift-dot"></span>AI</p>
+    <h2><span class="num mono">03</span>The AI feature, kept on a leash</h2>
+    <p class="sec-sub">The app sends one job id. Everything else is decided on the server, in an order that is the security design.</p>
+  </header>
+  <div class="cs-grid">
+    <div class="cs-block">
+      <h3>Edge Function, step by step</h3>
+      <ul class="bullets">
+        <li><b>Identity:</b> only a signed-in user gets in.</li>
+        <li><b>Input:</b> exactly <code class="mono">{ workOrderId }</code>, under 1 KB; anything else is refused.</li>
+        <li><b>Ownership:</b> the job is read with the caller's own permissions, so another account's job looks exactly like one that does not exist (identical 404s).</li>
+        <li><b>Notes:</b> empty or oversized notes are refused before any spend.</li>
+        <li><b>Rate limit:</b> 10 per hour and 30 per day per user, claimed atomically in a locked database table the app cannot touch.</li>
+        <li><b>Model call:</b> one attempt, 20-second timeout, no retries. Only the title, description and notes are sent: never customer names, phone numbers or addresses.</li>
+      </ul>
+    </div>
+    <div class="cs-block">
+      <h3>What the model may say</h3>
+      <p>Only facts in the notes: no invented parts, prices, warranty terms or certifications. The notes are treated as data, never instructions, and forged delimiter tags are stripped. The owner edits the draft before saving, and errors shown to the user are fixed friendly sentences, never provider text.</p>
+      <h3>Honest status</h3>
+      <p><b>The summary runs in a clearly labelled demo mode.</b> The live Claude Haiku 5.5 path is written but has never been run against the provider (no key configured), so it is not claimed as working. The rate limit, ownership checks, editing, saving and sharing are real and tested (22 of 22 function checks).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Evidence ============ -->
+<section class="section wrap" id="evidence">
+  <header class="sec-head">
+    <p class="mono sec-file"><span class="swift-dot"></span>Evidence</p>
+    <h2><span class="num mono">04</span>Evidence and gaps</h2>
+    <p class="sec-sub">Results from the final close-out run. The full record is in the repository's test plan.</p>
+  </header>
+  <div class="cs-block cs-wide">
+    <table class="cs-table">
+      <thead><tr><th>Check</th><th>Result</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>Lint, typecheck, unit tests</td><td class="ok">358 tests, 42 suites pass</td><td>Jest + React Native Testing Library; also green in CI and in a clean clone</td></tr>
+        <tr><td>Tenant isolation</td><td class="ok">71 of 71</td><td>Scripted attacks against the hosted project</td></tr>
+        <tr><td>AI summary function</td><td class="ok">22 of 22</td><td>Against the deployed function, in demo mode</td></tr>
+        <tr><td>Project health</td><td class="ok">21 of 21</td><td>expo-doctor</td></tr>
+        <tr><td>Main journey on Android</td><td class="ok">Verified</td><td>Sign-up to a completed job, summary, share, dashboard counts</td></tr>
+        <tr><td>Main journey on iOS simulator</td><td class="ok">Tested by me</td><td>Hands-on during development (this is where several bugs were found); no recorded checklist or screenshots</td></tr>
+        <tr><td>Live AI model</td><td class="no">Not verified</td><td>No provider key was configured; demo mode only</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cs-grid" style="margin-top:20px">
+    <div class="cs-block">
+      <h3>Bugs found by using it, not by tests</h3>
+      <ul class="bullets">
+        <li>A screen opened from another tab had <b>no back arrow</b>; my first fix never worked across tabs, a header button chosen from the stack did.</li>
+        <li>On Android the <b>notes box sat behind the keyboard</b>; found while taking the screenshots below, fixed with a small scroll hook.</li>
+        <li>At 150% text size a label broke mid-word and the tab names were cut off.</li>
+      </ul>
+    </div>
+    <div class="cs-block">
+      <h3>How it was built</h3>
+      <p>In small milestones (M0 to M6) with Claude Code as pair programmer under my review. 46 decisions are logged with the alternatives I rejected, and each milestone ended with a written review and a stop. The README lists what is real, what is mocked and what is not built.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Screenshots ============ -->
+<section class="section wrap" id="screenshots">
+  <header class="sec-head">
+    <p class="mono sec-file"><span class="swift-dot"></span>Screenshots</p>
+    <h2><span class="num mono">05</span>Screenshots</h2>
+    <p class="sec-sub">Android emulator, fictional demo data, dark mode. The summary is in demo mode. These are Android captures; I did not capture the iOS simulator.</p>
+  </header>
+  <div class="shots">
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-01-sign-in.jpg" alt="Sign in screen" loading="lazy"></div><figcaption>Sign in</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-02-onboarding.jpg" alt="Onboarding: create a business or start with demo data" loading="lazy"></div><figcaption>First run: create a business or start with demo data</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-03-dashboard.jpg" alt="Dashboard with live counts and recent jobs" loading="lazy"></div><figcaption>Dashboard: live counts, recent jobs</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-04-jobs.jpg" alt="Jobs list, unfinished first" loading="lazy"></div><figcaption>Jobs, unfinished first</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-05-job-detail.jpg" alt="Job detail with the allowed next moves" loading="lazy"></div><figcaption>Job detail: only the allowed next moves</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-06-notes-keyboard.jpg" alt="Completion notes above the keyboard" loading="lazy"></div><figcaption>Completion notes stay above the keyboard</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-07-summary.jpg" alt="Customer summary draft labelled as a demo summary" loading="lazy"></div><figcaption>Customer summary: editable draft, labelled "Demo summary"</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-08-share.jpg" alt="Android share sheet with the summary text" loading="lazy"></div><figcaption>Share the summary with the phone's share sheet</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-09-new-job.jpg" alt="New job form with validation messages" loading="lazy"></div><figcaption>New job: validation messages</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-10-customer-picker.jpg" alt="Customer picker sheet" loading="lazy"></div><figcaption>Pick a customer</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-11-customers.jpg" alt="Customers list" loading="lazy"></div><figcaption>Customers</figcaption></figure>
+    <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-12-technicians.jpg" alt="Technicians list" loading="lazy"></div><figcaption>Technicians</figcaption></figure>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="cs-block cs-wide">
+    <h3>Limits, and what I would do next</h3>
+    <ul class="bullets">
+      <li>One owner login per business: no technician or customer accounts, payments, invoices, calendar, push notifications, photos, search or offline mode.</li>
+      <li>Close the verification gaps: a recorded iOS checklist with screenshots, a live run of the AI path with a spend limit, offline and screen-reader checks on a device.</li>
+      <li>Account deletion and a password-reset flow before any store release.</li>
+    </ul>
+    <div class="eng-links">
+      <a class="store" href="index.html#contact">Get in touch</a>
+      <a class="store ghost" href="https://github.com/NosherKhalid/serviloop/blob/main/BACKLOG.md" target="_blank" rel="noopener">Full roadmap ↗</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer wrap mono">
+  <span>© <span id="year">2026</span> Nosher Khalid</span>
+  <span class="dim">Hand-built with HTML &amp; CSS · Hosted on GitHub Pages</span>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
