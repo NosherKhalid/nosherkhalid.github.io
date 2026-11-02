@@ -123,7 +123,7 @@
       </div>
       <div class="graph" aria-label="System architecture">
         <svg viewBox="0 0 440 250" role="img" aria-labelledby="sarch">
-          <title id="sarch">The Expo app talks to the Supabase API and to one Edge Function. Both reach Postgres with the caller's own permissions. Only the Edge Function can reach the AI model or the labelled mock.</title>
+          <title id="sarch">The Expo app talks to the Supabase API and to one Edge Function. Both reach Postgres with the caller's own permissions. Only the Edge Function can reach the AI model.</title>
           <g class="edges">
             <path d="M220 48 C220 80 110 76 110 104"/>
             <path d="M220 48 C220 80 330 76 330 104"/>
@@ -136,7 +136,7 @@
             <g class="node svc"><rect x="20" y="104" width="180" height="30" rx="7"/><text x="110" y="124">Supabase Auth + API</text></g>
             <g class="node svc"><rect x="250" y="104" width="180" height="30" rx="7"/><text x="340" y="124">Edge Function</text></g>
             <g class="node core"><rect x="20" y="200" width="180" height="30" rx="7"/><text x="110" y="220">Postgres · RLS</text></g>
-            <g class="node"><rect x="250" y="200" width="180" height="30" rx="7"/><text x="340" y="220">Claude | labelled mock</text></g>
+            <g class="node"><rect x="250" y="200" width="180" height="30" rx="7"/><text x="340" y="220">Claude Haiku 5.5</text></g>
           </g>
         </svg>
       </div>
@@ -196,7 +196,7 @@
       <h3>What the model may say</h3>
       <p>Only facts in the notes: no invented parts, prices, warranty terms or certifications. The notes are treated as data, never instructions, and forged delimiter tags are stripped. The owner edits the draft before saving, and errors shown to the user are fixed friendly sentences, never provider text.</p>
       <h3>Honest status</h3>
-      <p><b>The summary runs in a clearly labelled demo mode.</b> The live Claude Haiku 5.5 path is written but has never been run against the provider (no key configured), so it is not claimed as working. The rate limit, ownership checks, editing, saving and sharing are real and tested (22 of 22 function checks).</p>
+      <p><b>The summary is written by Claude Haiku 5.5, live.</b> I checked it against the deployed function with a real key: the reply came back as AI-written, hidden instructions in the notes were not obeyed, and thin notes did not produce invented prices, warranties or parts (those two checks are heuristics, not proofs). Without a key the function falls back to a clearly labelled template. Not yet checked: the live draft re-viewed in the app, and the rate limit against the live model (it is tested in fallback mode).</p>
     </div>
   </div>
 </section>
@@ -214,11 +214,11 @@
       <tbody>
         <tr><td>Lint, typecheck, unit tests</td><td class="ok">358 tests, 42 suites pass</td><td>Jest + React Native Testing Library; also green in CI and in a clean clone</td></tr>
         <tr><td>Tenant isolation</td><td class="ok">71 of 71</td><td>Scripted attacks against the hosted project</td></tr>
-        <tr><td>AI summary function</td><td class="ok">22 of 22</td><td>Against the deployed function, in demo mode</td></tr>
+        <tr><td>AI summary function</td><td class="ok">21 of 21 live</td><td>Against the deployed function; 21 of 21 with the live model, 22 of 22 in fallback mode (which also covers the rate limit)</td></tr>
         <tr><td>Project health</td><td class="ok">21 of 21</td><td>expo-doctor</td></tr>
         <tr><td>Main journey on Android</td><td class="ok">Verified</td><td>Sign-up to a completed job, summary, share, dashboard counts</td></tr>
         <tr><td>Main journey on iOS simulator</td><td class="ok">Tested by me</td><td>Hands-on during development (this is where several bugs were found); no recorded checklist or screenshots</td></tr>
-        <tr><td>Live AI model</td><td class="no">Not verified</td><td>No provider key was configured; demo mode only</td></tr>
+        <tr><td>Live AI model</td><td class="ok">Verified at the function level</td><td>Real key, deployed function; not yet re-viewed inside the app</td></tr>
       </tbody>
     </table>
   </div>
@@ -243,7 +243,7 @@
   <header class="sec-head">
     <p class="mono sec-file"><span class="swift-dot"></span>Screenshots</p>
     <h2><span class="num mono">05</span>Screenshots</h2>
-    <p class="sec-sub">Android emulator, fictional demo data, dark mode. The summary is in demo mode. These are Android captures; I did not capture the iOS simulator.</p>
+    <p class="sec-sub">Android emulator, fictional demo data, dark mode. The summary screenshots were taken in the labelled fallback mode, before the live model was connected. These are Android captures; I did not capture the iOS simulator.</p>
   </header>
   <div class="shots">
     <figure><div class="phone"><div class="island"></div><img src="assets/apps/serviloop-01-sign-in.jpg" alt="Sign in screen" loading="lazy"></div><figcaption>Sign in</figcaption></figure>
