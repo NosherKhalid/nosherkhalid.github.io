@@ -94,7 +94,7 @@
 
 <section class="stats wrap" aria-label="Highlights">
   <div class="stat"><b data-count="7">7</b><span>+ years shipping iOS</span></div>
-  <div class="stat"><b data-count="10">10</b><span>App Store products contributed to</span></div>
+  <div class="stat"><b data-count="9">9</b><span>App Store products contributed to</span></div>
   <div class="stat"><b>30–40<small>%</small></b><span>fewer crash issues, where measured</span></div>
   <div class="stat"><b>1.5<small>mo</small></b><span>to build SkillPlace architecture + video calling</span></div>
 </section>
@@ -154,36 +154,11 @@
             <p class="meta mono">King Revolution · 2022</p>
           </div>
         </div>
-        <p>Integrated <b>PortSIP VoIP</b> into the eSIM product for in-app SIP audio calling, working with low-level <b>PJSIP</b> bindings.</p>
+        <p>Migrated the VoIP layer from <b>PJSIP to PortSIP</b> on a live eSIM calling product, then fixed call-connection delays and UI defects.</p>
         <div class="tags"><span>VoIP</span><span>PortSIP</span><span>PJSIP</span><span>SIP audio</span></div>
         <div class="product-foot">
           <span class="rating mono">★ 4.5 · 2.1K ratings</span>
           <a class="store" href="https://apps.apple.com/us/app/slick-esim-global-calls/id1587682484" target="_blank" rel="noopener"><span class="apple"></span>App Store</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Earkick -->
-    <article class="product reveal">
-      <div class="phone" data-carousel>
-        <div class="island"></div>
-        <img src="assets/apps/earkick-0.jpg" alt="Earkick app screenshot" loading="lazy" class="active">
-        <img src="assets/apps/earkick-1.jpg" alt="" loading="lazy">
-        <img src="assets/apps/earkick-2.jpg" alt="" loading="lazy">
-      </div>
-      <div class="product-body">
-        <div class="product-top">
-          <img class="app-icon" src="assets/apps/earkick-icon.jpg" alt="" width="64" height="64">
-          <div>
-            <h3>Earkick: Self Care AI Coach</h3>
-            <p class="meta mono">Tiksom · 2021</p>
-          </div>
-        </div>
-        <p>Delivered mood tracking, anxiety logging, habit tracking and breathing exercises in a focused <b>1.5-month</b> engagement.</p>
-        <div class="tags"><span>Swift</span><span>Health</span><span>Tracking</span></div>
-        <div class="product-foot">
-          <span class="rating mono">★ 4.7 · 3.3K ratings</span>
-          <a class="store" href="https://apps.apple.com/us/app/earkick-self-care-ai-coach/id1584854531" target="_blank" rel="noopener"><span class="apple"></span>App Store</a>
         </div>
       </div>
     </article>
@@ -209,31 +184,6 @@
         <div class="product-foot">
           <span class="rating mono">★ 5.0</span>
           <a class="store" href="https://apps.apple.com/us/app/skillplace/id1575007486" target="_blank" rel="noopener"><span class="apple"></span>App Store</a>
-        </div>
-      </div>
-    </article>
-
-    <!-- Holiday Swap -->
-    <article class="product reveal">
-      <div class="phone" data-carousel>
-        <div class="island"></div>
-        <img src="assets/apps/holidayswap-0.jpg" alt="Holiday Swap app screenshot" loading="lazy" class="active">
-        <img src="assets/apps/holidayswap-1.jpg" alt="" loading="lazy">
-        <img src="assets/apps/holidayswap-2.jpg" alt="" loading="lazy">
-      </div>
-      <div class="product-body">
-        <div class="product-top">
-          <img class="app-icon" src="assets/apps/holidayswap-icon.jpg" alt="" width="64" height="64">
-          <div>
-            <h3>Holiday Swap</h3>
-            <p class="meta mono">Tiksom · 2021</p>
-          </div>
-        </div>
-        <p>Streamlined the <b>authentication and onboarding</b> flows for a travel platform with users around the world.</p>
-        <div class="tags"><span>Auth</span><span>Onboarding</span><span>Travel</span></div>
-        <div class="product-foot">
-          <span></span>
-          <a class="store" href="https://apps.apple.com/us/app/holiday-swa-p/id1313713150" target="_blank" rel="noopener"><span class="apple"></span>App Store</a>
         </div>
       </div>
     </article>
@@ -330,13 +280,13 @@
           <p class="mono kicker">React Native · TypeScript · Supabase</p>
           <span class="badge proj">Portfolio project</span>
         </div>
-        <h3>Serviloop: a field-service app, built full stack</h3>
+        <h3>Serviloop: a field-service app, built with AI agents</h3>
         <p>A cross-platform job-management app for small service businesses: customers, technicians, jobs with status and notes, a live dashboard and an editable AI-assisted customer summary. One Expo codebase on a Postgres backend where tenant isolation is enforced by the database and proven with scripted attacks.</p>
         <ul class="bullets">
           <li><b>Row-level security</b> on every table, composite foreign keys and column grants; <b>71 scripted cross-account checks</b> against the hosted project pass.</li>
           <li>A <b>bounded AI function</b>: verified caller, ownership through RLS, per-user limits claimed atomically in the database, one call with a timeout and no retries, notes treated as data.</li>
           <li><b>358 tests</b>, GitHub Actions CI, 46 written decisions and a clean-clone setup anyone can reproduce.</li>
-          <li>Built with <b>Claude Code</b> under my review, with every choice logged and the limits written down.</li>
+          <li><b>Built with Claude Code under my direction.</b> I set the requirements and acceptance criteria and verified the running app on iOS and Android; the implementation and its tests are agent-written, with every choice logged.</li>
         </ul>
         <div class="tags"><span>React Native</span><span>Expo Router</span><span>TypeScript</span><span>Supabase</span><span>Postgres RLS</span><span>Edge Functions</span><span>Zod</span><span>Jest · RNTL</span><span>GitHub Actions</span></div>
         <div class="cs-status">
@@ -466,7 +416,7 @@
       </div>
     </div>
     <div class="tier tier-xp reveal">
-      <p class="tier-name mono"><span class="c-kw">case</span> .crossPlatform <span class="c-com">// familiar · built Serviloop end to end</span></p>
+      <p class="tier-name mono"><span class="c-kw">case</span> .crossPlatform <span class="c-com">// familiar · directed Serviloop end to end</span></p>
       <div class="chips">
         <span>Flutter</span><span>Dart</span><span>React Native</span><span>Expo</span><span>TypeScript</span><span>Supabase · Postgres RLS</span><span>Edge Functions (Deno)</span>
       </div>
@@ -524,7 +474,7 @@
       <div class="commit-head mono"><span class="hash">e51c8a0</span><span class="date">Apr 2022 – Nov 2022</span></div>
       <h3>Sr. iOS Engineer <span class="at">@ King Revolution</span></h3>
       <ul>
-        <li>Integrated PortSIP VoIP into Slick's eSIM product, working at the level of the PJSIP bindings.</li>
+        <li>Replaced the PJSIP VoIP layer with PortSIP on Slick's live eSIM calling product; fixed call-connection delays and UI defects.</li>
         <li>Owned integration, debugging and release quality with QA and the client.</li>
       </ul>
     </li>
@@ -533,7 +483,6 @@
       <h3>iOS Engineer <span class="at">@ Tiksom</span></h3>
       <ul>
         <li>Built StoreKit subscriptions for TapForJoy: multiple tiers and receipt-validation edge cases.</li>
-        <li>Delivered Earkick's mood, anxiety, habit and breathing features; streamlined Holiday Swap's authentication and onboarding.</li>
       </ul>
     </li>
     <li class="commit reveal">
